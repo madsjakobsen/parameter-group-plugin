@@ -1,0 +1,14 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:st="jelly:stapler" xmlns:l="/lib/layout">
+    <j:set var="escapeEntryTitleAndDescription" value="false"/>
+    <f:advanced title="${it.groupLabel}" align="left"  description="${it.formattedDescription}">
+        <f:block>
+            <div name="parameter">
+                <input type="hidden" name="name" value="${it.name}"/>
+                <j:forEach var="param" items="${it.parameters}">
+                    <st:include it="${param}" page="${param.descriptor.valuePage}"/>
+                </j:forEach>
+            </div>
+        </f:block>
+    </f:advanced>
+</j:jelly>

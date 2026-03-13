@@ -1,0 +1,24 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+<j:set var="escapeEntryTitleAndDescription" value="false"/>
+
+  <f:entry title="Name" field="name">
+    <f:textbox/>
+  </f:entry>
+
+  <f:entry title="Group Label" field="groupLabel">
+    <f:textbox/>
+  </f:entry>
+
+  <f:entry title="Description" field="description">
+    <f:textbox/>
+  </f:entry>
+
+  <f:entry title="Parameters">
+    <f:repeatableHeteroProperty field="parameters"
+                                descriptors="${descriptor.parameterDescriptors}"
+                                hasHeader="true"
+                                addCaption="Add Parameter to Group"/>
+  </f:entry>
+
+</j:jelly>

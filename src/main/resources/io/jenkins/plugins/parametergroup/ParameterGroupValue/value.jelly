@@ -1,0 +1,12 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:st="jelly:stapler" xmlns:l="/lib/layout">
+<j:set var="escapeEntryTitleAndDescription" value="false"/>
+    <f:advanced title="${it.groupLabel}" align="left">
+        <f:block>
+            <j:forEach var="childValue" items="${it.childValues}">
+                <j:set var="escapeEntryTitleAndDescription" value="false"/>
+                <st:include it="${childValue}" page="value.jelly"/>
+            </j:forEach>
+        </f:block>
+    </f:advanced>
+</j:jelly>
