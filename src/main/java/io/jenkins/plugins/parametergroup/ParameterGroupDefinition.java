@@ -28,7 +28,9 @@ public class ParameterGroupDefinition extends ParameterDefinition {
     }
 
     public String getGroupLabel() {
-        return groupLabel;
+        return (groupLabel == null || groupLabel.isEmpty())
+            ? getName()
+            : groupLabel;
     }
 
     public List<ParameterDefinition> getParameters() {

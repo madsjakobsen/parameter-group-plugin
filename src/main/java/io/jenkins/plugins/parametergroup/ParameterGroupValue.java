@@ -30,7 +30,9 @@ public class ParameterGroupValue extends ParameterValue {
     }
 
     public String getGroupLabel() {
-        return groupLabel;
+        return (groupLabel == null || groupLabel.isEmpty())
+            ? getName()
+            : groupLabel;
     }
 
     @DataBoundSetter
