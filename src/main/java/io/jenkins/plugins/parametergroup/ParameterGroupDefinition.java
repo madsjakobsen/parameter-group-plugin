@@ -28,9 +28,7 @@ public class ParameterGroupDefinition extends ParameterDefinition {
     }
 
     public String getGroupLabel() {
-        return (groupLabel == null || groupLabel.isEmpty())
-            ? getName()
-            : groupLabel;
+        return (groupLabel == null || groupLabel.isEmpty()) ? getName() : groupLabel;
     }
 
     public List<ParameterDefinition> getParameters() {
@@ -39,10 +37,7 @@ public class ParameterGroupDefinition extends ParameterDefinition {
 
     @DataBoundSetter
     public void setParameters(List<ParameterDefinition> parameters) {
-        this.parameters =
-            parameters != null
-                ? new ArrayList<>(parameters)
-                : new ArrayList<>();
+        this.parameters = parameters != null ? new ArrayList<>(parameters) : new ArrayList<>();
     }
 
     @Override
@@ -59,9 +54,8 @@ public class ParameterGroupDefinition extends ParameterDefinition {
             childDataList.add((JSONObject) paramData);
         }
 
-        Map<String, ParameterDefinition> paramsByName = parameters
-            .stream()
-            .collect(Collectors.toMap(ParameterDefinition::getName, p -> p));
+        Map<String, ParameterDefinition> paramsByName =
+                parameters.stream().collect(Collectors.toMap(ParameterDefinition::getName, p -> p));
 
         List<ParameterValue> childValues = new ArrayList<>();
         for (JSONObject childData : childDataList) {
@@ -80,11 +74,7 @@ public class ParameterGroupDefinition extends ParameterDefinition {
 
     @Override
     public ParameterValue createValue(StaplerRequest2 req) {
-        return new ParameterGroupValue(
-            getName(),
-            groupLabel,
-            new ArrayList<>()
-        );
+        return new ParameterGroupValue(getName(), groupLabel, new ArrayList<>());
     }
 
     @Extension

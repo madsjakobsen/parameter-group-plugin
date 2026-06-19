@@ -22,7 +22,7 @@ class ParameterGroupIntegrationTest {
     void parameterGroupSetsEnvVarsInBuild(JenkinsRule jenkins) throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
 
-        ParameterGroup group = new ParameterGroup("deployConfig", "Deploy Configuration");
+        ParameterGroupDefinition group = new ParameterGroupDefinition("deployConfig", "Deploy Configuration");
         group.setParameters(List.of(
                 new StringParameterDefinition("DEPLOY_ENV", "staging"), new StringParameterDefinition("ZONE", "AMS1")));
 

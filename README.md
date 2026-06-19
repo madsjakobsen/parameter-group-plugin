@@ -41,6 +41,10 @@ script {
         println "${param.name}=${param.value}"
     }
 }
+
+// acces them select individually by map lookup
+echo "${params.ADVANCE_PARAMETER_GROUP}"
+echo params.ADVANCE_PARAMETER_GROUP.VALUE1
 ```
 
 ### Job DSL
