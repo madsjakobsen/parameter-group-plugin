@@ -4,22 +4,38 @@ import hudson.EnvVars;
 import hudson.model.ParameterValue;
 import hudson.model.Run;
 import java.util.List;
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.export.ExportedBean;
 
 @ExportedBean
 public class ParameterGroupValue extends ParameterValue {
 
-    private final String groupLabel;
+    private String groupLabel = "";
     private final List<ParameterValue> childValues;
 
-    public ParameterGroupValue(String name, String groupLabel, List<ParameterValue> childValues) {
+    @DataBoundConstructor
+    public ParameterGroupValue(String name, List<ParameterValue> childValues) {
         super(name);
-        this.groupLabel = groupLabel;
         this.childValues = childValues;
+    }
+
+    public ParameterGroupValue(
+        String name,
+        String groupLabel,
+        List<ParameterValue> childValues
+    ) {
+        this(name, childValues);
+        this.groupLabel = groupLabel;
     }
 
     public String getGroupLabel() {
         return groupLabel;
+    }
+
+    @DataBoundSetter
+    public void setGroupLabel(String groupLabel) {
+        this.groupLabel = groupLabel;
     }
 
     public List<ParameterValue> getChildValues() {
